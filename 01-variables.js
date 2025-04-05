@@ -1,5 +1,3 @@
-
-
 // Diferencia entre var y let
 
 console.log("*** VAR ***");
