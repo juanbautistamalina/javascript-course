@@ -1,9 +1,9 @@
-// Declaración de función
+// Función Declarada
 function getName(name = "usuario") {
   return `Mi nombre es ${name}`;
 }
 
-// Función Anónima
+// Función Anónima o Función Expresada
 const mensaje3 = function () {
     console.log("Esto es una función");
 }
