@@ -16,7 +16,7 @@ const animal = {
   color: "Gris y blanco",
 };
 
-// Función constructora: Se asignan los métodos al Prototino, NO a la función como tal
+// Función constructora: Se asignan los métodos al Prototipo, NO a la función como tal
 function Animal(nombre, especie) {
   this.nombre = nombre;
   this.especie = especie;
