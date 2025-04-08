@@ -40,3 +40,10 @@ for (let i = 0; i <= 100; i++) {
     console.count("contador del for");
     console.log(i);
 }
+
+// Pruebas o Testing por consola
+let x = 10;
+let y = 5;
+mensaje = "Se espera que X siempre sea menor que Y";
+console.assert(x < y, {x, y, mensaje});
+// console.assert(condición, {variablesEnJuego, mensaje})
