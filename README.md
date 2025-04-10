@@ -460,7 +460,7 @@ Animal.prototype.saltar = function () {
 ```jsx
 // Clase
 class Animal {
-  // El constructor es un método especial que se ejecuta en el momento de 
+  // El constructor es un método especial que se ejecuta en el momento de
   // instanciar la clase
   constructor(nombre, especie) {
     this.nombre = nombre;
@@ -496,6 +496,227 @@ jerry.saludar();
 const scooby = new Perro("Scooby-Doo", "Perro", "Gran Danés");
 console.log(scooby);
 scooby.saludar();
+```
+
+---
+
+## Métodos estáticos, getters y setters
+
+- Un método estático es un método que puede utilizarse sin necesidad de crear una instancia de la clase. Se utiliza usando la clase directamente, no un objeto creado con ella.
+- **Getters**: métodos que obtienen el valor de una propiedad.
+- **Setters**: métodos que permiten establecer o modificar el valor de una propiedad.
+
+```jsx
+class Persona {
+  constructor(nombre) {
+    this.nombre = nombre;
+  }
+
+  // Getter: devuelve el nombre
+  get nombre() {
+    return this._nombre;
+  }
+
+  // Setter: actualiza el nombre
+  set nombre(nuevoNombre) {
+    this._nombre = nuevoNombre;
+  }
+
+  // Método estático: no necesita instancia
+  static saludar() {
+    console.log("Hola, soy una persona.");
+  }
+}
+
+// Llamada al método estático sin crear objeto
+Persona.saludar();
+
+const persona = new Persona("Juan");
+
+// Usar getter y setter como si fueran propiedades
+console.log(persona.nombre); // Getter
+persona.nombre = "Juan"; // Setter
+console.log(persona.nombre); // Getter actualizado
+```
+
+---
+
+## Objeto Console
+
+- El objeto `console` en JavaScript es una herramienta integrada que se usa principalmente para mostrar mensajes en la consola del navegador o del entorno de desarrollo. Sirve para depurar código, mostrar valores, errores, advertencias o información durante la ejecución del programa.
+
+### Métodos
+
+- **`console.log()`**  
+  Muestra mensajes generales en la consola. Se usa para imprimir valores o seguir el flujo del código.
+
+- **`console.info()`**  
+  Muestra un mensaje informativo, similar a `log()`, pero se puede usar para distinguir tipos de mensajes.
+
+- **`console.error()`**  
+  Muestra un mensaje de error en la consola, generalmente con un estilo visual que indica que algo falló.
+
+- **`console.warn()`**  
+  Muestra una advertencia en la consola. No detiene la ejecución, pero avisa de un posible problema.
+
+- **`console.table()`**  
+  Muestra datos en forma de tabla. Muy útil para arrays y objetos.
+
+- **`console.group()`**  
+  Agrupa mensajes en un bloque. Todo lo que se imprima entre `console.group()` y `console.groupEnd()` se verá anidado.
+
+- **`console.clear()`**  
+  Limpia la consola.
+
+- **`console.time(label)` / `console.timeEnd(label)`**  
+  Se usan juntos para medir el tiempo de ejecución de un bloque de código. `console.time(label)` inicia el temporizador, y `console.timeEnd(label)` lo detiene y muestra en consola el tiempo transcurrido desde que comenzó.
+
+- **`console.count(label)`**  
+  Muestra cuántas veces se ejecuta esa línea de código con la etiqueta dada. Ideal para contar repeticiones.
+
+- **`console.assert(condición, datos)`**  
+  Solo imprime un error si la condición es falsa. Útil para debug o testing.
+
+---
+
+## Objeto Date
+
+- El objeto `Date` permite trabajar con fechas y horas. Se puede obtener la fecha actual, crear fechas personalizadas, obtener partes específicas de una fecha (como el día, mes, año, etc.), y hacer operaciones como comparaciones o cálculos de tiempo.
+
+### Métodos
+
+- **`new Date(year, month, day)`**  
+  Crea una nueva instancia con la fecha y hora actual.
+
+- **`getDate()`**  
+  Devuelve el día del mes (entre 1 y 31).
+
+- **`getDay()`**  
+  Devuelve el día de la semana (entre 0 y 6), donde 0 = Domingo y 6 = Sábado.
+
+- **`getMonth()`**  
+  Devuelve el número del mes (entre 0 y 11), donde 0 = Enero y 11 = Diciembre.
+
+- **`getFullYear()`**  
+  Devuelve el año completo (por ejemplo, 2025).
+
+- **`getHours()`**  
+  Devuelve la hora actual (entre 0 y 23).
+
+- **`getMinutes()`**  
+  Devuelve los minutos actuales (entre 0 y 59).
+
+- **`getSeconds()`**  
+  Devuelve los segundos actuales (entre 0 y 59).
+
+- **`toString()`**  
+  Convierte el objeto `Date` en una cadena legible que incluye la fecha y la hora completas.
+
+- **`Date.now()`**  
+  Devuelve el número de milisegundos transcurridos desde el 1 de enero de 1970 (fecha Epoch). Muy útil para medir duración de procesos o diferencias entre fechas.
+
+---
+
+## Objeto Math
+
+- `Math` es un objeto estático incorporado en JavaScript que contiene propiedades y métodos para realizar operaciones matemáticas, como redondeos, raíces, potencias, valores absolutos y generación de números aleatorios.
+
+### Métodos
+
+- **`Math.PI`**  
+  Devuelve el valor de π.
+
+- **`Math.abs(x)`**  
+  Devuelve el valor absoluto de `x` (convierte negativos en positivos).
+
+- **`Math.ceil(x)`**  
+  Redondea `x` hacia arriba al entero más cercano.
+
+- **`Math.floor(x)`**  
+  Redondea `x` hacia abajo al entero más cercano.
+
+- **`Math.round(x)`**  
+  Redondea `x` al entero más cercano.
+
+- **`Math.sqrt(x)`**  
+  Devuelve la raíz cuadrada de `x`.
+
+- **`Math.pow(base, exponente)`**  
+  Eleva la base a la potencia del exponente.
+
+- **`Math.random()`**  
+  Genera un número aleatorio entre 0 (inclusive) y 1 (exclusivo).
+
+- **`Math.sign(x)`**  
+  Devuelve:
+  - `1` si `x` es positivo
+  - `-1` si `x` es negativo
+  - `0` si `x` es cero
+
+---
+
+## Operador Cortocircuito
+
+- Los operadores de cortocircuito permiten evaluar expresiones lógicas (`||` y `&&`) donde JavaScript detiene la evaluación tan pronto como el resultado está determinado.
+
+### `||` (OR lógico) – _Cortocircuito a verdadero_:
+
+- Si el **primer valor es verdadero (truthy)**, se devuelve ese valor **sin evaluar el segundo**.
+- Si el **primer valor es falso (falsy)**, se evalúa y retorna el segundo.
+
+### `&&` (AND lógico) – _Cortocircuito a falso_:
+
+- Si el **primer valor es falso (falsy)**, se devuelve ese valor directamente.
+- Si el **primer valor es verdadero (truthy)**, se devuelve el segundo valor.
+
+---
+
+## alert, confirm y prompt
+
+- Estos métodos pertenecen al objeto global `window`, y solo funcionan en navegadores web, no en Node.js.
+
+### Métodos
+
+- **`alert(mensaje)`**  
+  Muestra una ventana emergente de alerta con un mensaje y un único botón "Aceptar". No retorna ningún valor.
+
+- **`confirm(mensaje)`**  
+  Muestra una ventana emergente con un mensaje y dos botones: "Aceptar" y "Cancelar".  
+  Retorna `true` si el usuario hace clic en Aceptar, o `false` si hace clic en Cancelar.
+
+- **`prompt(mensaje)`**  
+  Muestra una ventana emergente con un mensaje y un campo de texto para que el usuario escriba algo.  
+  Retorna el texto ingresado (como string). Si el usuario cancela, retorna `null`.
+
+---
+
+## Expresiones Regulares
+
+- Son una secuencia de caracteres que forman un patrón de búsqueda.  
+  Se utilizan principalmente para buscar, validar o reemplazar cadenas de texto.
+
+### Documentación
+
+- [Wikipedia - Expresión regular](https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular)
+- [MDN - Expresiones regulares en JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Regular_Expressions)
+
+---
+
+# Funciones Anónimas Autoejecutables
+
+- Una **IIFE** (Immediately Invoked Function Expression) es una función anónima que se ejecuta automáticamente en el momento en que se define, sin necesidad de ser llamada después.
+
+```js
+// Sintaxis
+(function () {
+  // Código que se ejecuta inmediatamente
+})();
+
+// Ejemplo con parámetros
+(function (d, w, c) {
+  c.log("Función anónima autoejecutable");
+  c.log(d);
+})(document, window, console);
 ```
 
 ---
