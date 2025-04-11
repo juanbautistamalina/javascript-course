@@ -702,7 +702,7 @@ console.log(persona.nombre); // Getter actualizado
 
 ---
 
-# Funciones Anónimas Autoejecutables
+## Funciones Anónimas Autoejecutables
 
 - Una **IIFE** (Immediately Invoked Function Expression) es una función anónima que se ejecuta automáticamente en el momento en que se define, sin necesidad de ser llamada después.
 
