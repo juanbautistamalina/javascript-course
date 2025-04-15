@@ -54,7 +54,7 @@ aplicarDescuento(1000, 20);
 const calcularAnios = (fecha = undefined) => {
 
     if (fecha === undefined) return console.warn("No ingresaste la fecha");
-    if (!fecha instanceof Date) return console.error("El valor ingresado no es una fecha válida");
+    if (!(fecha instanceof Date)) return console.error("El valor ingresado no es una fecha válida");
 
     let hoyMenosFecha = new Date().getTime() - fecha.getTime(); // formato epoch
     let aniosMS = 1000 * 60 * 60 * 25 * 365;
