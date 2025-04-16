@@ -34,9 +34,9 @@ potenciaArray([1, 4, 5]);
 */ 
 
 const mayorMenor = (array = undefined) => {
-    if (array === undefined) return console.warn("No ingresaste ningún array");
-    if (!(array instanceof Array)) return console.error("El valor ingresado no es un array válido");
-    if (array.length === 0) return console.error("El array está vacío");
+    if (array === undefined) return console.warn("No ingresaste ningún arreglo");
+    if (!(array instanceof Array)) return console.error("El valor ingresado no es un arreglo válido");
+    if (array.length === 0) return console.error("El arreglo está vacío");
 
     for (let num of array) 
         if (typeof num !== "number") return console.error(`El valor "${num}" ingresado, NO es un número`);
@@ -54,20 +54,19 @@ mayorMenor([1, 4, 5, 99, -60]);
 */
 
 const paresImpares = (array = undefined) => {
-    if (array === undefined) return console.warn("No ingresaste ningún array");
-    if (!(array instanceof Array)) return console.error("El valor ingresado no es un array válido");
-    if (array.length === 0) return console.error("El array está vacío");
+    if (array === undefined) return console.warn("No ingresaste ningún arreglo");
+    if (!(array instanceof Array)) return console.error("El valor ingresado no es un arreglo válido");
+    if (array.length === 0) return console.error("El arreglo está vacío");
 
     // let pares = [];
     // let impares = [];
 
-    for (numero of array) {
-        if (typeof numero !== "number") return console.error(`El valor "${num}" ingresado, NO es un número`);
+    for (numero of array) 
+        if (typeof numero !== "number") return console.error(`El valor "${numero}" ingresado, NO es un número`);
         
         // (numero % 2 == 0)
         // ? pares.push(numero)
         // : impares.push(numero)
-    }
 
     return console.log({
         pares: array.filter(n => n % 2 === 0),
@@ -75,4 +74,4 @@ const paresImpares = (array = undefined) => {
     })
 }
 
-paresImpares([1,2,3,4,5,6,7,8,9,0])
+paresImpares([1,2,3,4,5,6,7,8,9,0]);
