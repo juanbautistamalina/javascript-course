@@ -11,17 +11,12 @@
 *  ✅ Valida que el año de estreno sea un número entero de 4 dígitos.
 *  ✅ Valida que el país o paises sea introducidos en forma de arreglo.
 *  ✅ Valida que los géneros sean introducidos en forma de arreglo.
-
-*  Valida que los géneros introducidos esten dentro de los géneros aceptados*.
-
-*  ✅ Crea un método estático que devuelva los géneros aceptados .
-
-*  Valida que la calificación sea un número entre 0 y 10 pudiendo ser decimal de una posición.
-*  Crea un método que devuelva toda la ficha técnica de la película.
-
-*  A partir de un arreglo con la información de 3 películas genera 3 instancias de la clase 
+*  ✅ Valida que los géneros introducidos esten dentro de los géneros aceptados*.
+*  ✅ Crea un método estático que devuelva los géneros aceptados.
+*  ✅ Valida que la calificación sea un número entre 0 y 10 pudiendo ser decimal de una posición.
+*  ✅ Crea un método que devuelva toda la ficha técnica de la película.
+*  ✅ A partir de un arreglo con la información de 3 películas genera 3 instancias de la clase 
 *  de forma automatizada e imprime la ficha técnica de cada película.
-
 *  ✅ Géneros Aceptados: Action, Adult, Adventure, Animation, Biography, Comedy, Crime, 
 *  Documentary ,Drama, Family, Fantasy, Film Noir, Game-Show, History, Horror, Musical, 
 *  Music, Mystery, News, Reality-TV, Romance, Sci-Fi, Short, Sport, Talk-Show, Thriller, War, Western.
@@ -77,6 +72,7 @@ class Pelicula {
     };
 
     validarID(id) {
+        if (typeof id !== "string") return console.error(`El id ingresado '${id}' no es una cadena de texto`);
         const regExpID = /^[a-zA-Z]{2}[0-9]{7}$/;
         if (!regExpID.test(id)) return console.error(`El id '${id}' ingresado no es válido`);
     };
@@ -114,31 +110,74 @@ class Pelicula {
 
         for (let genero of generos) 
             if (typeof genero !== "string") return console.error(`El valor '${genero}' ingresado, NO es una cadena`);
+
         
-        // FALTA VALIDAR LOS GÉNEROS ACEPTADOS
+        let coincidencias = 0;
+        for (let genero of generos) {
+            for (let generoAceptado of generosAceptados) {
+                if (genero === generoAceptado) coincidencias++;
+            }
+        }
+
+        if (coincidencias !== generos.length) return console.error(`Los géneros introducidos no se encuentran dentro de los géneros aceptados`)
         
-        Pelicula.mostrarGenerosAceptados(generosAceptados)
+        // Pelicula.mostrarGenerosAceptados(generosAceptados);
     };
 
+    // Valida que la calificación sea un número entre 0 y 10 pudiendo ser decimal de una posición.
     validarClasificacion(clasificacion) {
-
+        if (typeof clasificacion !== "number") return console.error(`La clasificacion ingresada '${clasificacion}' no es un número`);
+        const regExpClasificacion = /^(10(\.0)?|[0-9](\.[0-9])?)$/;
+        if (!regExpClasificacion.test(clasificacion)) return console.error(`La clasificación ingresada '${clasificacion}' no es válida`);
     };
 
     static mostrarGenerosAceptados(generosAceptados) { 
         return console.log(`Los géneros aceptados son: ${generosAceptados}`);
     }
+
+
+    get getFichaTecnica() {
+        titulo: return console.log(`Ficha Técnica de la Película: ${this.objeto.titulo} \n- ID: ${this.objeto.id} \n- Título: ${this.objeto.titulo} \n- Director: ${this.objeto.director} \n- Año de estreno: ${this.objeto.anioEstreno} \n- País de origen: ${this.objeto.paises.join(", ")} \n- Géneros: ${this.objeto.generos.join(", ")} \n- Clasificación: ${this.objeto.clasificacion}`)
+        
+    }
 }
 
 
-const pelicula = new Pelicula({
-    id: "tt2343212",
-    titulo: "Avatar",
-    director: "James Cameron",
-    anioEstreno: 2009,
-    paises: ["USA", "Canadá"],
-    generos: ["Comedy"],
-    clasificacion: 7.9,
-});
+const peliculasData = [
+    {
+      id: "tt1087260",
+      titulo: "Spider-Man: Sin Camino a Casa",
+      director: "Jon Watts",
+      anioEstreno: 2021,
+      paises: ["USA"],
+      generos: ["Action", "Adventure", "Sci-Fi"],
+      clasificacion: 8.3
+    },
+    {
+      id: "tt1375666",
+      titulo: "El Origen",
+      director: "Christopher Nolan",
+      anioEstreno: 2010,
+      paises: ["USA", "UK"],
+      generos: ["Action", "Adventure", "Sci-Fi"],
+      clasificacion: 8.8
+    },
+    {
+      id: "tt0289879",
+      titulo: "El Efecto Mariposa",
+      director: "Eric Bress",
+      anioEstreno: 2004,
+      paises: ["USA"],
+      generos: ["Drama", "Sci-Fi", "Thriller"],
+      clasificacion: 7.6
+    }
+  ];
+  
+  const instanciasPeliculas = peliculasData.map(pelicula => new Pelicula(pelicula));
+  instanciasPeliculas.forEach(pelicula => pelicula.getFichaTecnica);
+  
+  
+
 
 // const pelicula = new Pelicula();
 // const pelicula = new Pelicula({})
