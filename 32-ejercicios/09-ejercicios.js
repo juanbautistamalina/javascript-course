@@ -173,11 +173,4 @@ const peliculasData = [
     }
   ];
   
-  const instanciasPeliculas = peliculasData.map(pelicula => new Pelicula(pelicula));
-  instanciasPeliculas.forEach(pelicula => pelicula.getFichaTecnica);
-  
-  
-
-
-// const pelicula = new Pelicula();
-// const pelicula = new Pelicula({})
+peliculasData.forEach(pelicula => new Pelicula(pelicula).getFichaTecnica);
