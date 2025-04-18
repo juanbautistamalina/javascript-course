@@ -45,7 +45,7 @@ class Pelicula {
             ["anioEstreno", "No ingresaste el año de estreno de la película"],
             ["paises", "No ingresaste el país de origen de la película"],
             ["generos", "No ingresaste el género de la película"],
-            ["clasificacion", "No ingresaste la clasificación de la película"],
+            ["calificacion", "No ingresaste la calificacion de la película"],
           ];
 
         for (let [clave, mensaje] of CAMPOS) {
@@ -68,7 +68,7 @@ class Pelicula {
         this.validarAnioEstreno(this.objeto.anioEstreno);
         this.validarPaises(this.objeto.paises);
         this.validarGeneros(this.objeto.generos, GENEROS);
-        this.validarClasificacion(this.objeto.clasificacion);
+        this.validarCalificacion(this.objeto.calificacion);
     };
 
     validarID(id) {
@@ -125,10 +125,10 @@ class Pelicula {
     };
 
     // Valida que la calificación sea un número entre 0 y 10 pudiendo ser decimal de una posición.
-    validarClasificacion(clasificacion) {
-        if (typeof clasificacion !== "number") return console.error(`La clasificacion ingresada '${clasificacion}' no es un número`);
-        const regExpClasificacion = /^(10(\.0)?|[0-9](\.[0-9])?)$/;
-        if (!regExpClasificacion.test(clasificacion)) return console.error(`La clasificación ingresada '${clasificacion}' no es válida`);
+    validarCalificacion(calificacion) {
+        if (typeof calificacion !== "number") return console.error(`La calificacion ingresada '${calificacion}' no es un número`);
+        const regExpCalificacion = /^(10(\.0)?|[0-9](\.[0-9])?)$/;
+        if (!regExpCalificacion.test(calificacion)) return console.error(`La calificacion ingresada '${calificacion}' no es válida`);
     };
 
     static mostrarGenerosAceptados(generosAceptados) { 
@@ -137,7 +137,7 @@ class Pelicula {
 
 
     get getFichaTecnica() {
-        titulo: return console.log(`Ficha Técnica de la Película: ${this.objeto.titulo} \n- ID: ${this.objeto.id} \n- Título: ${this.objeto.titulo} \n- Director: ${this.objeto.director} \n- Año de estreno: ${this.objeto.anioEstreno} \n- País de origen: ${this.objeto.paises.join(", ")} \n- Géneros: ${this.objeto.generos.join(", ")} \n- Clasificación: ${this.objeto.clasificacion}`)
+        return console.log(`Ficha Técnica de la Película: ${this.objeto.titulo} \n- ID: ${this.objeto.id} \n- Título: ${this.objeto.titulo} \n- Director: ${this.objeto.director} \n- Año de estreno: ${this.objeto.anioEstreno} \n- País de origen: ${this.objeto.paises.join(", ")} \n- Géneros: ${this.objeto.generos.join(", ")} \n- Calificación: ${this.objeto.calificacion}`)
         
     }
 }
@@ -151,7 +151,7 @@ const peliculasData = [
       anioEstreno: 2021,
       paises: ["USA"],
       generos: ["Action", "Adventure", "Sci-Fi"],
-      clasificacion: 8.3
+      calificacion: 8.3
     },
     {
       id: "tt1375666",
@@ -160,7 +160,7 @@ const peliculasData = [
       anioEstreno: 2010,
       paises: ["USA", "UK"],
       generos: ["Action", "Adventure", "Sci-Fi"],
-      clasificacion: 8.8
+      calificacion: 8.8
     },
     {
       id: "tt0289879",
@@ -169,7 +169,7 @@ const peliculasData = [
       anioEstreno: 2004,
       paises: ["USA"],
       generos: ["Drama", "Sci-Fi", "Thriller"],
-      clasificacion: 7.6
+      calificacion: 7.6
     }
   ];
   
