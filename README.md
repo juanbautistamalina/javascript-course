@@ -721,3 +721,159 @@ console.log(persona.nombre); // Getter actualizado
 
 ---
 
+## Módulos
+
+- Un **módulo** es un **archivo JavaScript** que puede **exportar** funciones, variables, objetos o clases para que otros archivos las **importen** y usen.
+
+### Ejemplo de uso
+
+#### 📄 `file.js` (módulo que exporta)
+
+```js
+// exportación de variables y constantes
+export let usuario = "Juan";
+export const password = 12345;
+
+const sumar = (a, b) => a + b;
+const restar = (a, b) => a - b;
+
+// exportación como objeto
+export const aritmetica = {
+  sumar,
+  restar,
+};
+
+// Exportación por defecto
+export default function saludar(nombre) {
+  console.log(`Hola, ${nombre}!`);
+}
+```
+
+#### 📄 `main.js` (módulo que importa)
+
+```js
+import saludar, { usuario, password, aritmetica } from './file.js';
+console.log(usuario); // Juan
+console.log(password); // 12345
+console.log(aritmetica.sumar(3, 2)); // 5
+console.log(aritmetica.restar(5, 1)); // 4
+
+saludar("Juan"); // Hola, Juan!
+```
+
+#### 📄 `index.html`
+
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Módulos en JS</title>
+</head>
+<body>
+  <h1>Módulos en JavaScript</h1>
+
+  <!-- Script como módulo -->
+  <script src="./main.js" type="module"></script>
+
+  <!-- Si el navegador no soporta módulos -->
+  <script src="./main.js" nomodule></script>
+</body>
+</html>
+```
+
+### ¿Qué es `export default`?
+
+- `export default` te permite exportar **una única cosa principal** desde un módulo. Esto puede ser una función, clase, objeto o cualquier valor.
+  - Solo puede ser usado una vez (por archivo).
+  - Se utiliza principalmente para exportar una única función/clase/valor principal.
+  - Al importarlo, se le puede dar cualquier nombre.
+
+---
+
+## Métodos de Arrays
+
+### 🔹 `filter()`
+
+- Crea un nuevo array con los elementos que cumplen una condición. No modifica el array original.
+
+```js
+const numeros = [1, 2, 3, 4, 5, 6];
+const pares = numeros.filter(num => num % 2 === 0);
+
+console.log(pares); // [2, 4, 6]
+```
+
+### 🔹 `map()`
+
+- Crea un nuevo array aplicando una función a cada elemento. No cambia el array original.
+
+```js
+const numeros = [1, 2, 3];
+const alCuadrado = numeros.map(num => num ** 2);
+
+console.log(alCuadrado); // [1, 4, 9]
+```
+
+### 🔹 `reduce()`
+
+- Reduce el array a un solo valor, ejecutando una función sobre cada elemento, acumulando el resultado.
+
+```js
+const numeros = [1, 2, 3, 4];
+
+// El 0 del final, es el valor inicial del acumulador
+const suma = numeros.reduce((acumulador, actual) => acumulador + actual, 0);
+
+console.log(suma); // 10
+```
+
+### 🔹 `sort()`
+
+- Ordena los elementos del array **modificándolo directamente**. Por defecto los convierte a texto, así que se recomienda usar una función de comparación.
+
+```js
+// Ejemplo con números
+const numeros = [10, 5, 20];
+numeros.sort((a, b) => a - b);
+
+console.log(numeros); // [5, 10, 20]
+
+// Ejemplo con palabras
+const nombres = ['Mateo', 'Juan', 'Manuel'];
+nombres.sort();
+
+console.log(nombres); // ['Juan', 'Manuel', 'Mateo']
+```
+
+### 🔹 `includes()`
+
+- Devuelve `true` si el array contiene el elemento especificado.
+
+```js
+const frutas = ['manzana', 'pera', 'banana'];
+const tienePera = frutas.includes('pera');
+
+console.log(tienePera); // true
+```
+
+---
+
+## ¿Cuándo usar `typeof` y cuándo `instanceof`?
+
+- **`typeof`** se usa para saber el **tipo primitivo** de una variable, como `"string"`, `"number"`, `"boolean"`, `"undefined"`, `"object"` o `"function"`.
+- **`instanceof`** se usa para saber si un **objeto fue creado por una clase o constructor específico**, como `Array`, `Date`, o una clase personalizada.
+
+### 🔹 `typeof`
+
+- Devuelve el **tipo primitivo** de una variable como una cadena de texto (`"string"`, `"number"`, `"boolean"`, `"object"`, `"function"`, etc.).
+
+**🟢** Usar para saber el tipo de un valor primitivo o si es una función.
+
+
+### 🔹 `instanceof`
+
+- Verifica si un objeto **es una instancia de una clase o constructor** específico (incluyendo clases nativas como `Array`, `Date`, etc.).
+
+🟢 Usar para saber si algo fue creado con una clase o constructor.
