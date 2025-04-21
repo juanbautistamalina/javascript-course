@@ -877,3 +877,18 @@ console.log(tienePera); // true
 - Verifica si un objeto **es una instancia de una clase o constructor** específico (incluyendo clases nativas como `Array`, `Date`, etc.).
 
 🟢 Usar para saber si algo fue creado con una clase o constructor.
+
+---
+
+# Asincronía y Event Loop
+
+JavaScript usa un modelo asíncrono y no bloqueante, con un loop de eventos implementados en un solo hilo (Single Thread) para operaciones de entrada y salida (input/output).  
+
+**Operaciones concurrentes y paralelas**: La concurrencia es cuando dos o más tareas progresan al mismo tiempo. El paralelismo es cuando varias tareas se ejecutan literalmente al mismo tiempo.
+
+**Operaciones Bloqueantes y No Bloqueantes**: Cada vez que se ejecuta una operación en el código, existe siempre una fase de espera. Si una operación es bloqueante o no bloqueante, se va a referir a cómo toma esa fase de espera. Una operación bloqueante es aquella que no va a devolver el control a la aplicación hasta que haya terminado su tarea. Una operación no bloqueante es aquella que tras ejecutarse devuelve el control a la aplicación sin importar si han terminado o no la tarea. 
+
+**Operaciones Síncronas y Asíncronas**: Estas operaciones se refieren a cuándo tendrá lugar la respuesta. En operaciones síncronas la respuesta sucede en el presente, mientras que en operaciones asíncronas, la respuesta sucede en el futuro.
+
+---
+
