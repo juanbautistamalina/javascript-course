@@ -892,3 +892,24 @@ JavaScript usa un modelo asíncrono y no bloqueante, con un loop de eventos impl
 
 ---
 
+## Temporizadores
+
+- Los **temporizadores** permiten **ejecutar funciones luego de un tiempo determinado** o **repetirlas a intervalos regulares**. Son muy útiles para tareas como mostrar un mensaje después de un tiempo, actualizar relojes en pantalla o detener procesos automáticamente.
+
+- `setTimeout` Ejecuta una función **una sola vez** luego de que pase el tiempo especificado.
+- `setInterval` Ejecuta una función **repetidamente**, con un intervalo de tiempo constante entre cada ejecución.
+
+```jsx
+// Sintaxis
+setTimeout(función, tiempoEnMilisegundos);
+setInterval(función, tiempoEnMilisegundos);
+
+// Ejemplos
+
+setTimeout(() => {
+    console.log("Ejecutando setTimeout. Se ejecuta una sola vez");
+}, 3000); // después de 3 segundos
+
+setInterval(() => {
+    console.log("Ejecutando setInterval. Se ejecuta indefinidamente cada cierto intervalo de tiempo");
+}, 5000); // cada 5 segundos
