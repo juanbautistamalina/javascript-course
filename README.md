@@ -880,7 +880,7 @@ console.log(tienePera); // true
 
 ---
 
-# Asincronía y Event Loop
+## Asincronía y Event Loop
 
 JavaScript usa un modelo asíncrono y no bloqueante, con un loop de eventos implementados en un solo hilo (Single Thread) para operaciones de entrada y salida (input/output).  
 
@@ -913,3 +913,119 @@ setTimeout(() => {
 setInterval(() => {
     console.log("Ejecutando setInterval. Se ejecuta indefinidamente cada cierto intervalo de tiempo");
 }, 5000); // cada 5 segundos
+```
+---
+
+## Promesa
+
+- Una promesa es un objeto que representa el resultado futuro de una operación asíncrona
+
+### Partes de una Promesa
+
+- Una promesa está formada por 2 partes, por así decirlo:
+
+### **1. El que crea la promesa**
+
+Este lado decide **qué hacer** y **cuándo se considera resuelto (✅)** o **rechazado (❌)**. Se utiliza `resolve` y `reject`.
+
+```jsx
+const miPromesa = new Promise((resolve, reject) => {
+    if (todoBien) {
+        resolve("Todo salió bien");
+    } else {
+        reject("Algo salió mal");
+    }
+});
+```
+
+### 2. **El que consume la promesa**
+
+Este lado **espera el resultado** de la promesa y reacciona:
+
+- `then`: si todo salió bien (✅)
+- `catch`: si hubo un error (❌)
+
+```jsx
+miPromesa
+    .then(respuesta => {
+        console.log("Éxito:", respuesta);
+    })
+    .catch(error => {
+        console.log("Error:", error);
+    });
+```
+
+### 📥 ¿Qué recibe el `then` y el `catch`?
+
+- ✅ `then(respuesta => { ... })` Recibe lo que se envíe con `resolve(...)`
+- ❌ `catch(error => { ... })` Recibe lo que se envíe con `reject(...)`
+
+```jsx
+// Ejemplos
+
+// 1. Texto
+new Promise((resolve, reject) => {
+    resolve("Hola mundo");
+}).then(texto => {
+    console.log("Texto recibido:", texto); // "Hola mundo"
+});
+
+// 2. Número
+new Promise((resolve, reject) => {
+    resolve(42);
+}).then(numero => {
+    console.log("Número recibido:", numero); // 42
+});
+
+// 3. Objeto
+new Promise((resolve, reject) => {
+    resolve({ nombre: "Juan", edad: 22 });
+}).then(persona => {
+    console.log(`Nombre: ${persona.nombre}, Edad: ${persona.edad}`); 
+    // Nombre: Juan, Edad 22
+});
+```
+
+---
+
+## Async y Await
+
+- **`async`** y **`await`** son palabras clave que permiten escribir código asíncrono de forma más sencilla y legible, parecida a código síncrono.
+
+- `async` Convierte una función normal en una función asíncrona, lo que significa que siempre devuelve una Promesa.
+- `await` Se utiliza dentro de una función `async`. Su función es esperar el resultado de una Promesa antes de continuar con la siguiente línea de código, es decir, detiene la ejecución de la función asíncrona hasta que la promesa se resuelva.
+    
+    ```jsx
+    function obtenerUsuario(id) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          const usuarios = [
+            { id: 1, nombre: "Ana" },
+            { id: 2, nombre: "Luis" },
+          ];
+    
+          const usuario = usuarios.find(u => u.id === id);
+    
+          if (usuario) {
+            resolve(usuario);
+          } else {
+            reject("Usuario no encontrado");
+          }
+        }, 1000);
+      });
+    }
+    
+    async function mostrarUsuario() {
+      try {
+        console.log("Buscando usuario...");
+        const usuario = await obtenerUsuario(1);
+        console.log("Usuario encontrado:", usuario);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    }
+    
+    mostrarUsuario();
+    ```
+    
+---
