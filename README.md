@@ -1029,3 +1029,30 @@ new Promise((resolve, reject) => {
     ```
     
 ---
+
+## Symbol
+
+- `Symbol` es un tipo de dato primitivo que **genera valores únicos**. Se usa comúnmente para **crear propiedades "privadas"** en objetos o para nombrar eventos de forma única.
+- Para crear un símbolo, se utiliza la función `Symbol()`. Opcionalmente, se puede pasar una cadena como argumento, que se utiliza como descripción del símbolo. **Esta descripción no es accesible en ningún lugar del código** y solo se utiliza para fines de depuración.
+
+```jsx
+const simbolo1 = Symbol("id");
+const simbolo2 = Symbol("id");
+
+console.log(simbolo1 === simbolo2); // false → cada Symbol es único
+
+// Usar Symbol como clave de propiedad
+const NOMBRE = Symbol("nombre");
+
+const persona = {
+  [NOMBRE]: "Juan",
+  edad: 22
+};
+
+console.log(persona[NOMBRE]); // "Juan"
+
+// Listar todos los Symbol del objeto
+console.log(Object.getOwnPropertySymbols(persona)); // [Symbol(nombre)]
+```
+
+---
