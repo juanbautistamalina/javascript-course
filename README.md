@@ -882,13 +882,15 @@ console.log(tienePera); // true
 
 ## Asincronía y Event Loop
 
-JavaScript usa un modelo asíncrono y no bloqueante, con un loop de eventos implementados en un solo hilo (Single Thread) para operaciones de entrada y salida (input/output).  
+- JavaScript usa un modelo asíncrono y no bloqueante, con un loop de eventos implementados en un solo hilo (Single Thread) para operaciones de entrada y salida (input/output).
 
-**Operaciones concurrentes y paralelas**: La concurrencia es cuando dos o más tareas progresan al mismo tiempo. El paralelismo es cuando varias tareas se ejecutan literalmente al mismo tiempo.
+![](https://jonmircha.com/img/blog/event-loop.png)
 
-**Operaciones Bloqueantes y No Bloqueantes**: Cada vez que se ejecuta una operación en el código, existe siempre una fase de espera. Si una operación es bloqueante o no bloqueante, se va a referir a cómo toma esa fase de espera. Una operación bloqueante es aquella que no va a devolver el control a la aplicación hasta que haya terminado su tarea. Una operación no bloqueante es aquella que tras ejecutarse devuelve el control a la aplicación sin importar si han terminado o no la tarea. 
-
-**Operaciones Síncronas y Asíncronas**: Estas operaciones se refieren a cuándo tendrá lugar la respuesta. En operaciones síncronas la respuesta sucede en el presente, mientras que en operaciones asíncronas, la respuesta sucede en el futuro.
+- **Single thread y Multi thread:** Un hilo es la unidad básica de ejecución de un proceso. Cada vez que se abre un programa como el navegador o editor de código, se levanta un proceso en la computadora e internamente este puede tener uno o varios hilos (*threads*) ejecutándose para que el proceso funcione.
+- **Operaciones de *CPU* y de Entrada y Salida: Las operaciones de CPU son a**quellas que pasan el mayor tiempo consumiendo Procesos del *CPU*, por ejemplo, la escritura de ficheros. Mientras que las de Entrada y Salida, son aquellas que pasan la mayor parte del tiempo esperando la respuesta de una petición o recurso, como la solicitud a una *API* o *BD*.
+- **Operaciones concurrentes y paralelas**: La concurrencia es cuando dos o más tareas progresan al mismo tiempo. El paralelismo es cuando varias tareas se ejecutan literalmente al mismo tiempo.
+- **Operaciones Bloqueantes y No Bloqueantes**: Cada vez que se ejecuta una operación en el código, existe siempre una fase de espera. Si una operación es bloqueante o no bloqueante, se va a referir a cómo toma esa fase de espera. Una operación bloqueante es aquella que no va a devolver el control a la aplicación hasta que haya terminado su tarea. Una operación no bloqueante es aquella que tras ejecutarse devuelve el control a la aplicación sin importar si han terminado o no la tarea. En caso de que se haya completado, devolverá los datos solicitados. En caso contrario (si la operación no ha podido ser satisfecha) podría devolver un código de error.
+- **Operaciones Síncronas y Asíncronas**: Estas operaciones se refieren a cuándo tendrá lugar la respuesta. En operaciones síncronas la respuesta sucede en el presente, mientras que en operaciones asíncronas, la respuesta sucede en el futuro.
 
 ---
 
