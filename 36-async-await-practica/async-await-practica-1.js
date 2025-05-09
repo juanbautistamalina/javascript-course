@@ -1,32 +1,25 @@
-const usuarios = [
-  { id: 1, nombre: "Ana" },
-  { id: 2, nombre: "Luis" },
-  { id: 3, nombre: "Carlos" },
-];
+/* SALUDO ASÍNCRONO
 
-function obtenerUsuario(id) {
+Simulá una función que devuelva un saludo ("Hola, usuario") después de 1 segundo usando una promesa. 
+Luego, creá una función async que espere ese saludo y lo muestre por consola.
+*/
+
+function saludar(){
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      const usuario = usuarios.find(u => u.id === id);
-      
-      if (usuario)
-        resolve(usuario);
-      
-      return reject("Usuario no encontrado");
-
+      resolve("Hola, usuario");
+      // reject("Algo salió mal...");
     }, 1000);
   });
 }
 
-// TODO: Usar async/await para llamar a obtenerUsuario(2) y mostrar el resultado.
-async function funcionAsincrona() {
+async function mostrarSaludo() {
   try {
-    const id = 2;
-    let usuario = await obtenerUsuario(id);
-    console.log(usuario);
+    const saludo = await saludar();
+    console.log(saludo);
   } catch (error) {
-    console.error(error);
+    console.error("Error: ", error);
   }
 }
 
-funcionAsincrona();
+mostrarSaludo();
