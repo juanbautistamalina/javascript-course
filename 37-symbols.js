@@ -1,6 +1,7 @@
-// Symbol es un tipo de dato Primitivo
-// Al crear un Symbol su valor se va a mantener privado y para uso interno
-// Se utiliza generalmente para crear propiedades privadas en los objetos
+/* Symbol es un tipo de dato Primitivo
+* Al crear un Symbol su valor se va a mantener privado y para uso interno.
+* Se utiliza generalmente para crear propiedades privadas en los objetos.
+*/
 
 const id1 = "123";
 const id2 = "123";
@@ -10,6 +11,7 @@ const id3 = Symbol();
 const id4 = Symbol();
 console.log(id3 === id4); // false → cada Symbol es único
 
+// ----------------------------------------------------------------
 
 // Symbol en objetos
 const NOMBRE = Symbol("nombre");
@@ -31,6 +33,10 @@ persona[SALUDAR] = function() {
 
 persona[SALUDAR]();
 
+// En caso de recorrer las propiedades de un objeto con un for of, o un for in, los Symbols NO van a aparecer
+for (let propiedad in persona) {
+  console.log(`${propiedad} : ${persona[propiedad]}`);
+}
 
 console.log(persona);
 
