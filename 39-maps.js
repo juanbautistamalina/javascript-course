@@ -1,4 +1,5 @@
-/* Los Map en Javascript son estructuras de datos que permiten almacenar pares clave-valor.
+/* Los Map en Javascript son estructuras de datos que permiten almacenar pares clave-valor. 
+* En los Maps, no pueden repetirse las claves, similar a lo que ocurre en los Sets.
 
 *  La diferencia principal entre los Map y los Objetos es la siguiente:
 * - En los objetos, las claves son strings (o symbol)
@@ -6,6 +7,8 @@
 */
 
 const mapa = new Map();
+
+// mapa.set(propiedad, valor);
 mapa.set("nombre", "Juan Bautista");
 mapa.set("apellido", "Malina");
 mapa.set("edad", 22);
@@ -13,8 +16,8 @@ mapa.set("edad", 22);
 console.log(mapa);
 
 // Propeidades y métodos
-console.log(mapa.size);
-console.log(mapa.has("nombre"));
+console.log(mapa.size); // cantidad de elementos
+console.log(mapa.has("nombre")); // verificar si posee una key
 console.log(mapa.has("email"));
 
 console.log(mapa.get("nombre")); // Obtener el valor de una key
