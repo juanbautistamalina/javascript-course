@@ -918,6 +918,31 @@ setInterval(() => {
 ```
 ---
 
+## Callback
+
+- Una **callback** es una función que se pasa como argumento a otra función, y que se ejecuta después de que la otra función termine su trabajo.
+    
+    ```jsx
+    function cargarDatos(callback) {
+      console.log("Cargando datos...");
+    
+      setTimeout(() => {
+        const datos = { nombre: "Juan", edad: 22 };
+        console.log("Datos cargados.");
+        callback(datos);
+      }, 2000); 
+    }
+    
+    function mostrarDatos(info) {
+      console.log("Nombre:", info.nombre);
+      console.log("Edad:", info.edad);
+    }
+    
+    cargarDatos(mostrarDatos);
+    ```
+
+---
+
 ## Promesa
 
 - Una promesa es un objeto que representa el resultado futuro de una operación asíncrona
@@ -1032,29 +1057,79 @@ new Promise((resolve, reject) => {
     
 ---
 
-## Symbol
+## Nuevos Tipos y Características
 
-- `Symbol` es un tipo de dato primitivo que **genera valores únicos**. Se usa comúnmente para **crear propiedades "privadas"** en objetos o para nombrar eventos de forma única.
-- Para crear un símbolo, se utiliza la función `Symbol()`. Opcionalmente, se puede pasar una cadena como argumento, que se utiliza como descripción del símbolo. **Esta descripción no es accesible en ningún lugar del código** y solo se utiliza para fines de depuración.
+### Symbol
 
-```jsx
-const simbolo1 = Symbol("id");
-const simbolo2 = Symbol("id");
+- `Symbol` es un tipo de dato primitivo que genera valores únicos. Se usa comúnmente para crear propiedades "privadas" en objetos o para nombrar eventos de forma única.
+- Para crear un símbolo, se utiliza la función `Symbol()`. Opcionalmente, se puede pasar una cadena como argumento, que se utiliza como descripción del símbolo. Esta descripción no es accesible en ningún lugar del código y solo se utiliza para fines de depuración.
+    
+    ```jsx
+    const simbolo1 = Symbol("id");
+    const simbolo2 = Symbol("id");
+    
+    console.log(simbolo1 === simbolo2); // false → cada Symbol es único
+    
+    // Usar Symbol como clave de propiedad
+    const NOMBRE = Symbol("nombre");
+    
+    const persona = {
+      [NOMBRE]: "Juan",
+      edad: 22
+    };
+    
+    console.log(persona[NOMBRE]); // "Juan"
+    
+    // Listar todos los Symbol del objeto
+    console.log(Object.getOwnPropertySymbols(persona)); // [Symbol(nombre)]
+    ```
 
-console.log(simbolo1 === simbolo2); // false → cada Symbol es único
 
-// Usar Symbol como clave de propiedad
-const NOMBRE = Symbol("nombre");
+### Set
 
-const persona = {
-  [NOMBRE]: "Juan",
-  edad: 22
-};
+- Un `Set` es una colección de valores únicos. Esto significa que no permite duplicados, y es útil cuando necesitas guardar elementos sin repetirlos.
+    
+    ```jsx
+    const correos = [
+      "juan@email.com",
+      "ana@email.com",
+      "juan@email.com",
+      "lucas@email.com"
+    ];
+    
+    // Usando Set para quitar duplicados
+    const correosUnicos = [...new Set(correos)];
+    
+    console.log(correosUnicos);
+    ```
+    
 
-console.log(persona[NOMBRE]); // "Juan"
+### Map
 
-// Listar todos los Symbol del objeto
-console.log(Object.getOwnPropertySymbols(persona)); // [Symbol(nombre)]
-```
+- Un `Map` es una colección de pares clave-valor donde:
+    - Cada clave puede ser de cualquier tipo (no solo strings como en los objetos).
+    - Los elementos mantienen el orden de inserción.
+    - Puedes usar métodos como `.set()`, `.get()`, `.has()`, `.delete()` y `.clear()`.
+    
+    ```jsx
+    const asistencia = new Map();
+    
+    // Agregar estudiantes y su estado de asistencia
+    asistencia.set("Ana", true);
+    asistencia.set("Luis", false);
+    asistencia.set("Carlos", true);
+    
+    // Consultar si un estudiante asistió
+    console.log("¿Ana asistió?", asistencia.get("Ana")); // true
+    
+    // Verificar si un estudiante está en la lista
+    console.log("¿Está Luis?", asistencia.has("Luis")); // true
+    
+    // Iterar el mapa
+    for (let [nombre, asistio] of asistencia) {
+      console.log(`${nombre}: ${asistio ? "Presente" : "Ausente"}`);
+    }
+    ```
 
 ---
+
